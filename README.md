@@ -1,8 +1,6 @@
-# vim-java-sql - JDBC Made A Mite Easier
+# vim-python-sql
 
-A very simple plugin to enable SQL syntax highlighting inside strings in a
-Java file. If you can handle the visual trip of two syntax highlighters
-co-existing, this plugin will provide.
+This plugin enables SQL syntax highlighting inside single-quoted multiline strings in a Python file. It is heavily based on [Kris Jenkins's vim-python-sql](https://github.com/krisajenkins/vim-java-sql) plugin, from which the rest of this README is copied with little modification:
 
 ## Screenshot
 
@@ -11,12 +9,11 @@ co-existing, this plugin will provide.
 ## Installation
 
 * Install [Pathogen][pathogen]. (You're already using Pathogen, right?)
-* Clone this project into `~/.vim/bundle/vim-java-sql`.
+* Clone this project into `~/.vim/bundle/vim-python-sql`.
 
 ## Usage
 
-Whenever you edit a Java file, strings starting with `"SELECT`, `"INSERT`,
-`"UPDATE`, `"DELETE`, `"CREATE` or `"DROP` will be highlighted as SQL.
+Whenever you edit a Python file, multiline single-quoted strings (those delimited with `'''...'''`) will be highlighted as SQL.
 
 Matches are case-sensitive, because that's my preference, but it's trivial to
 fork & change the matching rules to suit your coding style.
