@@ -1,10 +1,10 @@
-# vim-python-sql (WIP)
+# vim-python-sql
 
 This plugin enables SQL syntax highlighting inside single-quoted multiline strings in a Python file. It is heavily based on [Kris Jenkins's vim-python-sql](https://github.com/krisajenkins/vim-java-sql) plugin, from which the rest of this README is copied with little modification:
 
 ## Screenshot
 
-![Screenshot](https://raw.github.com/krisajenkins/vim-java-sql/master/vim-java-sql-screenshot.png)
+![Screenshot](https://raw.github.com/MathSquared/vim-python-sql/master/vim-python-sql-screenshot.png)
 
 ## Installation
 
