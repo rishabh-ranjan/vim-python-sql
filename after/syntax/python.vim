@@ -5,12 +5,9 @@ unlet! b:current_syntax
 " Load SQL syntax.
 syntax include @SQL syntax/sql.vim
 
-" Set SQL to match in any javaString that starts with an obvious start-of-SQL-marker
-" and uses single quotes.
-"	Take care not to consume the double-quotes (\zs & \ze).
-"	Matches are case-sensitive (\C), because I always uppercase SQL keywords.
-syntax region sqlSnippet start=/'''\C\zs\v\_$\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|DROP)/ end=/\ze'''/ contains=@SQL containedin=pythonString
-
 " Restore original syntax.
 let b:current_syntax = saved_syntax
 unlet! saved_syntax
+
+" Set SQL to match in any javaString that uses single quotes.
+syntax region sqlSnippet matchgroup=pythonTripleQuotes start=/'''/ end=/'''/ contains=@SQL
