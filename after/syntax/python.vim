@@ -1,13 +1,23 @@
-" Disable current syntax temporarily.
-let saved_syntax = b:current_syntax
-unlet! b:current_syntax
+" Put this in ~/.vim/after/syntax/python.vim
 
-" Load SQL syntax.
+" Slight tweaks to https://lonelycoding.com/can-i-use-both-python-and-sql-syntax-highlighting-in-the-same-file-in-vim/
+
+" Needed to make syntax/sql.vim do something
+unlet b:current_syntax
+
+" Load SQL syntax
 syntax include @SQL syntax/sql.vim
 
-" Restore original syntax.
-let b:current_syntax = saved_syntax
-unlet! saved_syntax
+" Need to add the keepend here
+syn region pythonString matchgroup=pythonQuotes
+      \ start=+[uU]\=\z(['"]\)+ end="\z1" skip="\\\\\|\\\z1"
+      \ contains=pythonEscape,@Spell keepend
+syn region  pythonRawString matchgroup=pythonQuotes
+      \ start=+[uU]\=[rR]\z(['"]\)+ end="\z1" skip="\\\\\|\\\z1"
+      \ contains=@Spell keepend
 
-" Set SQL to match in any python string that uses double quotes and begin with 
-syntax region sqlSnippet matchgroup=pythonTripleQuotes start=/"""/ end=/"""/ contains=@SQL
+syn region SQLEmbedded contains=@SQL containedin=pythonString,pythonRawString contained
+    \ start=+\v(ALTER|BEGIN|CALL|COMMENT|COMMIT|CONNECT|CREATE|DELETE|DROP|END|EXPLAIN|EXPORT|GRANT|IMPORT|INSERT|LOAD|LOCK|MERGE|REFRESH|RENAME|REPLACE|REVOKE|ROLLBACK|SELECT|SET|TRUNCATE|UNLOAD|UNSET|UPDATE|UPSERT)+
+    \ end=+;+
+
+let b:current_syntax = "pysql"
