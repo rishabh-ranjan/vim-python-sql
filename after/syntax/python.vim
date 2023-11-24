@@ -9,5 +9,5 @@ syntax include @SQL syntax/sql.vim
 let b:current_syntax = saved_syntax
 unlet! saved_syntax
 
-" Set SQL to match in any javaString that uses single quotes.
-syntax region sqlSnippet matchgroup=pythonTripleQuotes start=/'''/ end=/'''/ contains=@SQL
+" Set SQL to match in any python string that uses double quotes and begin with 
+syntax region sqlSnippet matchgroup=pythonTripleQuotes start=/"""(SELECT|WITH)/ end=/"""/ contains=@SQL
